@@ -1,10 +1,18 @@
 create table city (
-  uuid id primary key,
-  varchar name is not null,
-  varchar woeid is not null unique,
-  varchar code is not null
+  id    uuid primary key,
+  name  varchar is not null,
+  woeid int is not null,
+  code  int is not null
 );
 
-insert into city values (lower(hex(randomblob(16))), 'Samara', '2077746', '846');
-insert into city values (lower(hex(randomblob(16))), 'Moscow', '2122265', '495');
-insert into city values (lower(hex(randomblob(16))), 'St Petersburg', '2123260', '812');
+create table forecast (
+  id   uuid primary key,
+  date date    not null,
+  max_wind int,
+  min_wind int,
+  max_temp int,
+  min_temp int,
+  city_id uuid not null,
+  foreign key (city_id) references city(id)
+);
+
