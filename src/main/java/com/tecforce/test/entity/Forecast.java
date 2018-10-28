@@ -15,8 +15,14 @@ public class Forecast {
     @GeneratedValue
     protected UUID id;
 
+    @Column(name = "image_url")
+    protected String imageUrl;
+
     @Column(name = "date")
     protected Date date;
+
+    @Column(name = "day")
+    protected String day;
 
     @Column(name = "max_wind")
     protected Integer maxWind;
@@ -24,11 +30,17 @@ public class Forecast {
     @Column(name = "min_wind")
     protected Integer minWind;
 
+    @Column(name = "current_wind")
+    protected Integer currentWind;
+
     @Column(name = "max_temp")
     protected Integer maxTemp;
 
     @Column(name = "min_temp")
     protected Integer minTemp;
+
+    @Column(name = "current_temp")
+    protected Integer currentTemp;
 
     @NotNull
     @ManyToOne // default eager
@@ -38,12 +50,16 @@ public class Forecast {
     public Forecast() {
     }
 
-    public Forecast(Date date, Integer maxWind, Integer minWind, Integer maxTemp, Integer minTemp, City city) {
-	this.date = date;
-	this.maxWind = maxWind;
-	this.minWind = minWind;
-	this.maxTemp = maxTemp;
-	this.minTemp = minTemp;
-	this.city = city;
+    public Forecast(String imageUrl, Date date, String day, Integer maxWind, Integer minWind, Integer currentWind, Integer maxTemp, Integer minTemp, Integer currentTemp, City city) {
+        this.date = date;
+        this.imageUrl = imageUrl;
+        this.day = day;
+        this.maxWind = maxWind;
+        this.minWind = minWind;
+        this.currentWind = currentWind;
+        this.maxTemp = maxTemp;
+        this.minTemp = minTemp;
+        this.currentTemp = currentTemp;
+        this.city = city;
     }
 }

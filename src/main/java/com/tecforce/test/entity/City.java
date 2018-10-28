@@ -37,15 +37,31 @@ public class City {
     }
 
     public City(String name, Integer woeid, Integer code) {
-	this.name = name;
-	this.woeid = woeid;
-	this.code = code;
+        this.name = name;
+        this.woeid = woeid;
+        this.code = code;
     }
 
     public City(String name, Integer woeid, Integer code, List<Forecast> forecastList) {
-	this.name = name;
-	this.woeid = woeid;
-	this.code = code;
-	this.forecastList = forecastList;
+        this.name = name;
+        this.woeid = woeid;
+        this.code = code;
+        this.forecastList = forecastList;
+    }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder()
+                .append("Id")
+                .append(id)
+                .append("\nName: ")
+                .append(name)
+                .append("\nWoeid: ")
+                .append(woeid)
+                .append("\nCode")
+                .append(code);
+        if (forecastList.isEmpty())
+            stringBuilder.append("\nForecast")
+                    .append(forecastList.toString());
+        return stringBuilder.toString();
     }
 }
