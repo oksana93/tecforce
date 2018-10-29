@@ -11,11 +11,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.*;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -41,8 +45,6 @@ public class CityTests extends TestApplicationTests {
 
     @Test
     public void testYahooRequest() throws JSONException {
-        JSONObject jsonObject = yahooService.getCurrentForecastByCityWoeid(2077746);
-        LOG.debug(jsonObject.toString());
+        LOG.debug(yahooService.getCurrentForecastByCityWoeid(2077746).toString());
     }
-
 }

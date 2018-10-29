@@ -51,44 +51,50 @@ public class City {
         return id;
     }
 
-    public void setId(UUID id) {
+    public City setId(UUID id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public City setName(String name) {
         this.name = name;
+        return this;
     }
 
     public Integer getWoeid() {
         return woeid;
     }
 
-    public void setWoeid(Integer woeid) {
+    public City setWoeid(Integer woeid) {
         this.woeid = woeid;
+        return this;
     }
 
     public Integer getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public City setCode(Integer code) {
         this.code = code;
+        return this;
     }
 
     public List<Forecast> getForecastList() {
         return forecastList;
     }
 
-    public void setForecastList(List<Forecast> forecastList) {
+    public City setForecastList(List<Forecast> forecastList) {
         this.forecastList = forecastList;
+        return this;
     }
 
-    public void addForecast(Forecast forecast) {
+    public City addForecast(Forecast forecast) {
         forecastList.add(forecast);
+        return this;
     }
 
     public String toString() {

@@ -1,9 +1,10 @@
 package com.tecforce.test.entity;
 
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
@@ -19,7 +20,7 @@ public class Forecast {
     protected String imageUrl;
 
     @Column(name = "date")
-    protected LocalDate date;
+    protected LocalDate date = LocalDate.now();
 
     @Column(name = "day")
     protected String day;
@@ -45,9 +46,9 @@ public class Forecast {
     @Column(name = "text")
     protected String text;
 
-    @NotNull
     @ManyToOne // default eager
     @JoinColumn(name = "city_id")
+    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     protected City city;
 
     public Forecast() {
@@ -72,109 +73,107 @@ public class Forecast {
         return id;
     }
 
-    public void setId(UUID id) {
+    public Forecast setId(UUID id) {
         this.id = id;
+        return this;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public Forecast setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
     }
 
     public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public Forecast setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public void setDate(String date) {
-        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+        return this;
     }
 
     public String getDay() {
         return day;
     }
 
-    public void setDay(String day) {
+    public Forecast setDay(String day) {
         this.day = day;
+        return this;
     }
 
     public Integer getMaxWind() {
         return maxWind;
     }
 
-    public void setMaxWind(Integer maxWind) {
+    public Forecast setMaxWind(Integer maxWind) {
         this.maxWind = maxWind;
+        return this;
     }
 
     public Integer getMinWind() {
         return minWind;
     }
 
-    public void setMinWind(Integer minWind) {
+    public Forecast setMinWind(Integer minWind) {
         this.minWind = minWind;
+        return this;
     }
 
     public Integer getCurrentWind() {
         return currentWind;
     }
 
-    public void setCurrentWind(Integer currentWind) {
+    public Forecast setCurrentWind(Integer currentWind) {
         this.currentWind = currentWind;
-    }
-
-    public void setCurrentWind(String currentWind) {
-        if (StringUtils.isEmpty(currentWind))
-            this.currentWind = Integer.valueOf(currentWind);
+        return this;
     }
 
     public Integer getMaxTemp() {
         return maxTemp;
     }
 
-    public void setMaxTemp(Integer maxTemp) {
+    public Forecast setMaxTemp(Integer maxTemp) {
         this.maxTemp = maxTemp;
+        return this;
     }
 
     public Integer getMinTemp() {
         return minTemp;
     }
 
-    public void setMinTemp(Integer minTemp) {
+    public Forecast setMinTemp(Integer minTemp) {
         this.minTemp = minTemp;
+        return this;
     }
 
     public Integer getCurrentTemp() {
         return currentTemp;
     }
 
-    public void setCurrentTemp(Integer currentTemp) {
+    public Forecast setCurrentTemp(Integer currentTemp) {
         this.currentTemp = currentTemp;
-    }
-
-    public void setCurrentTemp(String currentTemp) {
-        if (StringUtils.isEmpty(currentTemp))
-            this.currentTemp = Integer.valueOf(currentTemp);
+        return this;
     }
 
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public Forecast setText(String text) {
         this.text = text;
+        return this;
     }
 
     public City getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public Forecast setCity(City city) {
         this.city = city;
+        return this;
     }
 }

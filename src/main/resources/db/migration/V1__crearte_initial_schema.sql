@@ -8,7 +8,7 @@ create table city (
 create table forecast (
   id           uuid primary key,
   image_url    varchar,
-  date         date not null,
+  date         date default current_date,
   day          varchar,
   max_wind     int,
   min_wind     int,

@@ -25,7 +25,7 @@ public class ForecastTests {
     public void testYahooMapper() {
         JSONObject jsonObject = new JSONObject("{\"query\":{\"created\":\"2018-10-29T05:08:10Z\",\"count\":1,\"lang\":\"en-US\",\"results\":{\"channel\":{\"image\":{\"width\":\"142\",\"link\":\"http://weather.yahoo.com\",\"title\":\"Yahoo! Weather\",\"url\":\"http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif\",\"height\":\"18\"},\"item\":{\"condition\":{\"date\":\"Mon, 29 Oct 2018 08:00 AM SAMT\",\"temp\":\"40\",\"code\":\"30\",\"text\":\"Partly Cloudy\"}},\"location\":{\"country\":\"Russia\",\"city\":\"Samara\",\"region\":\" Samara Oblast\"},\"units\":{\"distance\":\"mi\",\"temperature\":\"F\",\"pressure\":\"in\",\"speed\":\"mph\"},\"wind\":{\"chill\":\"36\",\"speed\":\"10\",\"direction\":\"315\"}}}}}");
         ForecastMapper forecastMapper = ForecastMapper.INSTANCE;
-        Forecast forecast = forecastMapper.getCityByJsonObject(jsonObject);
+        Forecast forecast = forecastMapper.getForecastByJsonObject(jsonObject);
         LOG.debug(forecast.toString());
     }
 }

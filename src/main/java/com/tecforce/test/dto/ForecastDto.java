@@ -1,9 +1,10 @@
 package com.tecforce.test.dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public class ForecastDto {
+public class ForecastDto implements Serializable {
     protected UUID id;
     protected String imageUrl;
     protected LocalDate date;
