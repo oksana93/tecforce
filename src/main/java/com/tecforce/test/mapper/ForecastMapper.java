@@ -1,9 +1,12 @@
 package com.tecforce.test.mapper;
 
+import com.tecforce.test.dto.ForecastDto;
 import com.tecforce.test.entity.Forecast;
 import org.json.JSONObject;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+
+import java.util.List;
 
 @Mapper
 public interface ForecastMapper {
@@ -44,4 +47,8 @@ public interface ForecastMapper {
     }
 
     Forecast getForecastByStr(String currentWind, String imageUrl, String date, String currentTemp, String text);
+
+    ForecastDto getForecastJpaToDto(Forecast forecast);
+
+    List<ForecastDto> getForecastListJpaToDto(List<Forecast> forecast);
 }
