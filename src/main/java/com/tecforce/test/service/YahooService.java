@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class ForecastInformation {
+public class YahooService {
 
     public JSONObject getCurrentForecastByCityWoeid(Integer woeid) throws JSONException {
         HttpHeaders headers = new HttpHeaders();

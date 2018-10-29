@@ -1,6 +1,6 @@
 package com.tecforce.test;
 
-import com.tecforce.test.service.ForecastInformation;
+import com.tecforce.test.service.YahooService;
 import com.tecforce.test.repository.CityRepository;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,12 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application-test.properties")
-public class CityTest extends TestApplicationTests {
-    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(CityTest.class);
+public class CityTests extends TestApplicationTests {
+    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(SpringRunner.class);
+
     @Autowired
     protected CityRepository cityRepository;
     @Autowired
-    protected ForecastInformation forecastInformation;
+    protected YahooService yahooService;
 
     @Test
     @Transactional
@@ -31,7 +32,7 @@ public class CityTest extends TestApplicationTests {
 
     @Test
     public void testYahooRequest() throws JSONException {
-        JSONObject jsonObject = forecastInformation.getCurrentForecastByCityWoeid(2077746);
+        JSONObject jsonObject = yahooService.getCurrentForecastByCityWoeid(2077746);
         LOG.debug(jsonObject.toString());
     }
 

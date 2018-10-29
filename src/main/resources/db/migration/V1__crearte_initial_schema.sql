@@ -17,6 +17,7 @@ create table forecast (
   min_temp     int,
   current_temp int,
   city_id      uuid not null,
+  text         varchar,
   foreign key (city_id) references city (id)
 );
 

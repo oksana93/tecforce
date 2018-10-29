@@ -1,10 +1,14 @@
 package com.tecforce.test.entity;
 
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Data
@@ -19,7 +23,7 @@ public class Forecast {
     protected String imageUrl;
 
     @Column(name = "date")
-    protected Date date;
+    protected LocalDate date;
 
     @Column(name = "day")
     protected String day;
@@ -42,6 +46,9 @@ public class Forecast {
     @Column(name = "current_temp")
     protected Integer currentTemp;
 
+    @Column(name = "text")
+    protected String text;
+
     @NotNull
     @ManyToOne // default eager
     @JoinColumn(name = "city_id")
@@ -50,7 +57,8 @@ public class Forecast {
     public Forecast() {
     }
 
-    public Forecast(String imageUrl, Date date, String day, Integer maxWind, Integer minWind, Integer currentWind, Integer maxTemp, Integer minTemp, Integer currentTemp, City city) {
+    public Forecast(String imageUrl, LocalDate date, String day, Integer maxWind, Integer minWind, Integer currentWind,
+                    Integer maxTemp, Integer minTemp, Integer currentTemp, City city, String text) {
         this.date = date;
         this.imageUrl = imageUrl;
         this.day = day;
@@ -60,6 +68,34 @@ public class Forecast {
         this.maxTemp = maxTemp;
         this.minTemp = minTemp;
         this.currentTemp = currentTemp;
+        this.city = city;
+        this.text = text;
+    }
+
+    public void setCurrentWind(String currentWind) {
+        if (!StringUtils.isEmpty(currentWind))
+            this.currentWind = Integer.valueOf(currentWind);
+    }
+
+    public void setCurrentTemp(String currentTemp) {
+        if (!StringUtils.isEmpty(currentTemp))
+            this.currentTemp = Integer.valueOf(currentTemp);
+
+    }
+
+    public void setDate(String date) {
+        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setCity(City city) {
         this.city = city;
     }
 }
