@@ -22,17 +22,8 @@ public class TestData {
     @PostConstruct
     @Transactional
     public void initCityData() {
-        List<Forecast> forecastList = new ArrayList<>();
-        forecastList.add(new Forecast()
-                .setCurrentTemp(-2)
-                .setCurrentWind(7));
-        forecastList.add(new Forecast()
-                .setDate(LocalDate.now().plus(1, DAYS))
-                .setCurrentTemp(-5)
-                .setCurrentWind(5));
-
-        cityRepository.save(new City("Samara", 2077746, 846).setForecastList(forecastList));
-        cityRepository.save(new City("Moscow", 122265, 495));
+        cityRepository.save(new City("Samara", 2077746, 846));
+        cityRepository.save(new City("Moscow", 2122265, 495));
         cityRepository.save(new City("St Petersburg", 2123260, 812));
     }
 

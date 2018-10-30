@@ -20,7 +20,7 @@ public class ForecastScheduler {
     @Autowired
     protected ForecastService forecastService;
 
-    @Scheduled(cron = "*/30 * * * * *")
+    @Scheduled(cron = "* * */12 * * *")
     public void updateDatabase() {
         List<City> cityList = cityService.getAllCity();
         if (cityList != null)
