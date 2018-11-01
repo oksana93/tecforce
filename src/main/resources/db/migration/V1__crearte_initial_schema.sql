@@ -9,7 +9,7 @@ create table forecast (
   id           uuid primary key,
   image_url    varchar,
   date         date default current_date,
-  day          varchar,
+  day          varchar default to_char(current_date, 'dy'),
   max_wind     int,
   min_wind     int,
   current_wind int,
