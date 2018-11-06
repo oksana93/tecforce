@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {action} from 'mobx';
+import agent from '../agent';
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Select from "@material-ui/core/Select/Select";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
@@ -7,43 +7,15 @@ import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 
 class SelectCity extends Component {
     state = {
-        name: '',
+        cityList: [],
+        cityId: '',
         isOpen: false,
     };
 
-    handleChange = event => {
-        this.setState({[event.target.name]: event.target.value});
-    };
-
-    handleClose = () => {
-        this.setState({isOpen: false});
-    };
-
-    handleOpen = () => {
-        this.setState({isOpen: true});
-    };
-    agent;
-
-    // getAllCities = () => {
-    //     this.inProgress = true;
-    //     this.errors = undefined;
-    //     return this.agent.GetAllCity.cityList()
-    //         .catch(action((err) => {
-    //             this.errors = err;
-    //             throw err;
-    //         }))
-    //         .finally(action(() => {
-    //             this.inProgress = false;
-    //         }));
-    // };
-
     render() {
-        let cityList = this.props.cityList;
-        console.log(cityList);
-        const cityItems = cityList.map((city) =>
-            <MenuItem key={city.woeid} value={city.woeid}>{city.name}</MenuItem>
+        const cityItems = this.state.cityList.map((city) =>
+            <MenuItem key={city.id} id={city.id} value={city.name}>{city.name}</MenuItem>
         );
-
         return (
             <h3>
                 <InputLabel htmlFor="demo-controlled-open-select">
@@ -53,7 +25,7 @@ class SelectCity extends Component {
                     open={this.state.isOpen}
                     onClose={this.handleClose}
                     onOpen={this.handleOpen}
-                    value={this.state.name}
+                    value={this.state.cityId}
                     onChange={this.handleChange}
                     inputProps={{
                         name: 'name',
@@ -68,6 +40,37 @@ class SelectCity extends Component {
             </h3>
         );
     }
+
+    constructor(props) {
+        super(props);
+        this.getAllCities(props);
+    }
+
+    handleChange = event => {
+        this.setState({
+            cityId: event.target.value
+        });
+    };
+
+    handleClose = () => {
+        this.setState({isOpen: false});
+    };
+
+    handleOpen = () => {
+        this.getAllCities();
+        this.setState({isOpen: true});
+    };
+
+    getAllCities = (props) => {
+        agent.Agent.cityList()
+            .then(dataWrappedByPromise => dataWrappedByPromise.json())
+            .then(data => {
+                this.setState({
+                    cityList: data
+                });
+                console.log(this.state.cityList);
+            });
+    };
 };
 
 export default SelectCity;

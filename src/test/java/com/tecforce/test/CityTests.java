@@ -3,23 +3,18 @@ package com.tecforce.test;
 import com.tecforce.test.dto.CityDto;
 import com.tecforce.test.entity.City;
 import com.tecforce.test.mapper.CityMapper;
-import com.tecforce.test.service.YahooService;
 import com.tecforce.test.repository.CityRepository;
+import com.tecforce.test.service.YahooService;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.*;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)

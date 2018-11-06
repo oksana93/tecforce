@@ -1,6 +1,6 @@
 "use strict";
 import React, {Component} from 'react';
-import '../css/MainForm.css';
+import '../MainForm/style.css';
 
 const MainForm = () => {
     return (
