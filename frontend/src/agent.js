@@ -5,12 +5,16 @@ let FORECAST_ROOT = ROOT_URL + '/forecast';
 
 const Agent = {
     cityList: () =>
-        requests.get('/all')
+        requests.getCities('/all'),
+    forecastListByCity: (cityId) =>
+        requests.getForecastByCity('/current?cityId=' + cityId)
 };
 
 const requests = {
-    get: url =>
-        fetch(`${CITY_ROOT}${url}`)
+    getCities: url =>
+        fetch(`${CITY_ROOT}${url}`),
+    getForecastByCity: url =>
+        fetch(`${FORECAST_ROOT}${url}`)
 };
 
 export default {

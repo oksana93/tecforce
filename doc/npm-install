@@ -1,0 +1,4 @@
+npm install -g create-react-app
+create-react-app my-app
+npm install material-ui
+npm install -g express-generator

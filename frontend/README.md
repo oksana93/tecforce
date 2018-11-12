@@ -115,7 +115,7 @@ Create React AppForm is divided into two packages:
 
 You almost never need to update `create-react-app` itself: it delegates all the setup to `react-scripts`.
 
-When you run `create-react-app`, it always creates the project with the latest version of `react-scripts` so you’ll get all the new features and improvements in newly created apps automatically.
+When you run `create-react-app`, it always creates the project with the latest version of `react-scripts` so you’ll getCities all the new features and improvements in newly created apps automatically.
 
 To update an existing project to a new version of `react-scripts`, [open the changelog](https://github.com/facebook/create-react-app/blob/master/CHANGELOG.md), find the version you’re currently on (check `package.json` in this folder if you’re not sure), and apply the migration instructions for the newer versions.
 
@@ -418,7 +418,7 @@ export default DangerButton;
 
 Be aware of the [difference between default and named exports](http://stackoverflow.com/questions/36795819/react-native-es-6-when-should-i-use-curly-braces-for-import/36796281#36796281). It is a common source of mistakes.
 
-We suggest that you stick to using default imports and exports when a module only exports a single thing (for example, a component). That’s what you get when you use `export default Button` and `import Button from './Button'`.
+We suggest that you stick to using default imports and exports when a module only exports a single thing (for example, a component). That’s what you getCities when you use `export default Button` and `import Button from './Button'`.
 
 Named exports are useful for utility modules that export several functions. A module may have at most one default export and as many named exports as you like.
 
@@ -723,7 +723,7 @@ Note that we normally encourage you to `import` assets in JavaScript files inste
 For example, see the sections on [adding a stylesheet](#adding-a-stylesheet) and [adding images and fonts](#adding-images-fonts-and-files).
 This mechanism provides a number of benefits:
 
-- Scripts and stylesheets get minified and bundled together to avoid extra network requests.
+- Scripts and stylesheets getCities minified and bundled together to avoid extra network requests.
 - Missing files cause compilation errors instead of 404 errors for your users.
 - Result filenames include content hashes so you don’t need to worry about browsers caching their old versions.
 
@@ -754,7 +754,7 @@ render() {
 
 Keep in mind the downsides of this approach:
 
-- None of the files in `public` folder get post-processed or minified.
+- None of the files in `public` folder getCities post-processed or minified.
 - Missing files will not be called at compilation time, and will cause 404 errors for your users.
 - Result filenames won’t include content hashes so you’ll need to add query arguments or rename them every time they change.
 
@@ -910,7 +910,7 @@ Alternatively you may use `yarn`:
 yarn add react-router-dom
 ```
 
-To try it, delete all the code in `src/AppFormForm.js` and replace it with any of the examples on its website. The [Basic Example](https://reacttraining.com/react-router/web/example/basic) is a good place to get started.
+To try it, delete all the code in `src/AppFormForm.js` and replace it with any of the examples on its website. The [Basic Example](https://reacttraining.com/react-router/web/example/basic) is a good place to getCities started.
 
 Note that [you may need to configure your production server to support client-side routing](#serving-apps-with-client-side-routing) before deploying your app.
 
@@ -1058,7 +1058,7 @@ Please refer to the [dotenv documentation](https://github.com/motdotla/dotenv) f
 
 Expand variables already on your machine for use in your `.env` file (using [dotenv-expand](https://github.com/motdotla/dotenv-expand)).
 
-For example, to get the environment variable `npm_package_version`:
+For example, to getCities the environment variable `npm_package_version`:
 
 ```
 REACT_APP_VERSION=$npm_package_version
@@ -1193,7 +1193,7 @@ We don’t recommend this approach.
 
 > Note: this feature is available with `react-scripts@2.0.0` and higher.
 
-If the `proxy` option is **not** flexible enough for you, you can get direct access to the Express app instance and hook up your own proxy middleware.
+If the `proxy` option is **not** flexible enough for you, you can getCities direct access to the Express app instance and hook up your own proxy middleware.
 
 You can use this feature in conjunction with the `proxy` property in `package.json`, but it is recommended you consolidate all of your logic into `src/setupProxy.js`.
 
@@ -1283,7 +1283,7 @@ If you’re hosting your `build` with a static hosting provider you can use [rea
 
 There are also opportunities to use this outside of static hosting, to take the pressure off the server when generating and caching routes.
 
-The primary benefit of pre-rendering is that you get the core content of each page _with_ the HTML payload—regardless of whether or not your JavaScript bundle successfully downloads. It also increases the likelihood that each route of your application will be picked up by search engines.
+The primary benefit of pre-rendering is that you getCities the core content of each page _with_ the HTML payload—regardless of whether or not your JavaScript bundle successfully downloads. It also increases the likelihood that each route of your application will be picked up by search engines.
 
 You can read more about [zero-configuration pre-rendering (also called snapshotting) here](https://medium.com/superhighfives/an-almost-static-stack-6df0a2791319).
 
@@ -1703,7 +1703,7 @@ Finally, jsdom is also not needed for [snapshot testing](http://facebook.github.
 
 ### Snapshot Testing
 
-Snapshot testing is a feature of Jest that automatically generates text snapshots of your components and saves them on the disk so if the UI output changes, you get notified without manually writing any assertions on the component output. [Read more about snapshot testing.](http://facebook.github.io/jest/blog/2016/07/27/jest-14.html)
+Snapshot testing is a feature of Jest that automatically generates text snapshots of your components and saves them on the disk so if the UI output changes, you getCities notified without manually writing any assertions on the component output. [Read more about snapshot testing.](http://facebook.github.io/jest/blog/2016/07/27/jest-14.html)
 
 ### Editor Integration
 
@@ -2016,7 +2016,7 @@ serve -s build
 
 The last command shown above will serve your static site on the port **5000**. Like many of [serve](https://github.com/zeit/serve)’s internal settings, the port can be adjusted using the `-p` or `--port` flags.
 
-Run this command to get a full list of the options available:
+Run this command to getCities a full list of the options available:
 
 ```sh
 serve -h
@@ -2035,7 +2035,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/', function(req, res) {
+app.getCities('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
@@ -2057,8 +2057,8 @@ This is because when there is a fresh page load for a `/todos/42`, the server lo
 ```diff
  app.use(express.static(path.join(__dirname, 'build')));
 
--app.get('/', function (req, res) {
-+app.get('/*', function (req, res) {
+-app.getCities('/', function (req, res) {
++app.getCities('/*', function (req, res) {
    res.sendFile(path.join(__dirname, 'build', 'index.html'));
  });
 ```
@@ -2072,7 +2072,7 @@ If you’re using [Apache HTTP Server](https://httpd.apache.org/), you need to c
     RewriteRule ^ index.html [QSA,L]
 ```
 
-It will get copied to the `build` folder when you run `npm run build`.
+It will getCities copied to the `build` folder when you run `npm run build`.
 
 If you’re using [Apache Tomcat](http://tomcat.apache.org/), you need to follow [this Stack Overflow answer](https://stackoverflow.com/a/41249464/4878474).
 
@@ -2338,7 +2338,7 @@ GitHub Pages doesn’t support routers that use the HTML5 `pushState` history AP
 
 ##### "/dev/tty: No such a device or address"
 
-If, when deploying, you get `/dev/tty: No such a device or address` or a similar error, try the following:
+If, when deploying, you getCities `/dev/tty: No such a device or address` or a similar error, try the following:
 
 1. Create a new [Personal Access Token](https://github.com/settings/tokens)
 2. `git remote set-url origin https://<user>:<token>@github.com/<user>/<repo>` .
@@ -2346,7 +2346,7 @@ If, when deploying, you get `/dev/tty: No such a device or address` or a similar
 
 ##### "Cannot read property 'email' of null"
 
-If, when deploying, you get `Cannot read property 'email' of null`, try the following:
+If, when deploying, you getCities `Cannot read property 'email' of null`, try the following:
 
 1. `git config --global user.name '<your_name>'`
 2. `git config --global user.email '<your_email>'`
@@ -2363,7 +2363,7 @@ Sometimes `npm run build` works locally but fails during deploy via Heroku. Foll
 
 ##### "Module not found: Error: Cannot resolve 'file' or 'directory'"
 
-If you get something like this:
+If you getCities something like this:
 
 ```
 remote: Failed to create a production build. Reason:

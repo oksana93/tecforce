@@ -14,7 +14,7 @@ class SelectCity extends Component {
 
     render() {
         const cityItems = this.state.cityList.map((city) =>
-            <MenuItem key={city.id} id={city.id} value={city.name}>{city.name}</MenuItem>
+            <MenuItem key={city.id} value={city.id}>{city.name}</MenuItem>
         );
         return (
             <h3>
@@ -30,7 +30,7 @@ class SelectCity extends Component {
                     inputProps={{
                         name: 'name',
                         id: 'demo-controlled-open-select',
-                    }}>
+                    }}>cd
                     <MenuItem value="">
                         <em>None</em>
                     </MenuItem>
@@ -71,6 +71,6 @@ class SelectCity extends Component {
                 console.log(this.state.cityList);
             });
     };
-};
+}
 
 export default SelectCity;
