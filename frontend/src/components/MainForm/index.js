@@ -2,12 +2,17 @@
 import React, {Component} from 'react';
 import '../MainForm/style.css';
 
-const MainForm = () => {
-    return (
-        <div className="Header">
+class MainForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            cityId: null,
+        }
+    }
 
-        </div>
-    );
-};
+    render() {
+        return null;
+    }
+}
 
 export default MainForm;

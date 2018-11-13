@@ -6,11 +6,16 @@ import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 
 class SelectCity extends Component {
-    state = {
-        cityList: [],
-        cityId: '',
-        isOpen: false,
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            cityList: [],
+            cityId: this.props.cityId,
+            cityIdChange: this.props.cityIdChange,
+            isOpen: false,
+        };
+        this.getAllCities(this.props)
+    }
 
     render() {
         const cityItems = this.state.cityList.map((city) =>
@@ -41,15 +46,8 @@ class SelectCity extends Component {
         );
     }
 
-    constructor(props) {
-        super(props);
-        this.getAllCities(props);
-    }
-
     handleChange = event => {
-        this.setState({
-            cityId: event.target.value
-        });
+        this.state.cityIdChange(event.target.value);
     };
 
     handleClose = () => {
@@ -69,6 +67,10 @@ class SelectCity extends Component {
                     cityList: data
                 });
                 console.log(this.state.cityList);
+            })
+            .catch(e => {
+                console.log(e);
+                return e;
             });
     };
 }

@@ -18,9 +18,9 @@ public interface ForecastMapper {
 
     default Forecast getForecastByJsonObject(JSONObject jsonObject) {
         String speed = null;
-        Integer currentWind = null;
+        Double currentWind = null;
         String temp = null;
-        Integer currentTemp = null;
+        Double currentTemp = null;
         String url = null;
         String text = null;
         if (jsonObject.has("query")) {
@@ -33,7 +33,7 @@ public interface ForecastMapper {
                         JSONObject windJsonObject = channelJsonObject.getJSONObject("wind");
                         if (windJsonObject != null) {
                             speed = windJsonObject.getString("speed");
-                            currentWind = StringUtils.isEmpty(speed) ? null : Integer.valueOf(speed);
+                            currentWind = StringUtils.isEmpty(speed) ? null : (Double.valueOf(speed) * 0.44704);
                         }
                     }
                     if (channelJsonObject.has("image")) {
@@ -47,11 +47,11 @@ public interface ForecastMapper {
                             JSONObject conditionJsonObject = itemJsonObject.getJSONObject("condition");
                             if (conditionJsonObject.has("temp")) {
                                 temp = conditionJsonObject.getString("temp");
-                                currentTemp = StringUtils.isEmpty(temp) ? null : Integer.valueOf(temp);
+                                currentTemp = StringUtils.isEmpty(temp) ? null : ((Double.valueOf(temp) - 32) / 1.8);
                             }
                             if (conditionJsonObject.has("text"))
                                 text = conditionJsonObject.getString("text");
-                            return INSTANCE.getForecastByStr(currentWind, url, currentTemp, text);
+                            return INSTANCE.getForecastByStr(currentWind.intValue(), url, currentTemp.intValue(), text);
                         }
                     }
                 }

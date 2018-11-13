@@ -18,14 +18,28 @@ const styles = theme => ({
 });
 
 class AppForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            cityId: '',
+            cityIdChange: this.cityIdChange.bind(this)
+        }
+    }
+
+    cityIdChange = (cityId) => {
+        this.setState({
+            cityId: cityId
+        });
+    };
+
     render() {
         return (
             <div className="App">
-                <HeaderForm/>
+                <HeaderForm cityId = {this.state.cityId} cityIdChange={this.state.cityIdChange}/>
                 <BodyForm/>
             </div>
         );
     }
-};
+}
 
 export default withStyles(styles)(AppForm);

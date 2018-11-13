@@ -2,7 +2,7 @@
     z-index: 2;
     position: absolute;
     overflow: auto;
-    min-width: 800px;
+    min-width: 80%;
     height: 100%;
     flex-direction: column; /* направление дочерних элементов */
     align-items: center;

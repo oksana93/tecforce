@@ -5,13 +5,18 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 @Entity
 @Table(name = "forecast")
 public class Forecast {
+    private final static SimpleDateFormat dateFormat = new SimpleDateFormat("EEE", Locale.ENGLISH);
+
     @Id
     @GeneratedValue
     protected UUID id;
@@ -22,7 +27,7 @@ public class Forecast {
     @Column(name = "date")
     protected LocalDate date = LocalDate.now();
 
-    @Column(name = "day")
+    @Column(name = "day", nullable = false)
     protected String day;
 
     @Column(name = "max_wind")
@@ -50,6 +55,14 @@ public class Forecast {
     @JoinColumn(name = "city_id")
     @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     protected City city;
+
+    @PrePersist
+    public void prePersist() {
+        if (day == null)
+            day = dateFormat.format(new Date());
+        if (date == null)
+            date = LocalDate.now();
+    }
 
     public Forecast() {
     }
@@ -95,6 +108,7 @@ public class Forecast {
         this.date = date;
         return this;
     }
+
 
     public String getDay() {
         return day;

@@ -15,12 +15,16 @@ const styles = theme => ({
 });
 
 class CityList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         const {classes} = this.props;
         return (
             <form autoComplete="off">
                 <FormControl className={classes.formControl}>
-                    <SelectCity/>
+                    <SelectCity cityId = {this.props.cityId} cityIdChange={this.props.cityIdChange}/>
                 </FormControl>
             </form>
         );

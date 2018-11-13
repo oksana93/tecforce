@@ -15,14 +15,7 @@ import java.util.List;
 public interface CityMapper {
     CityMapper INSTANCE = Mappers.getMapper(CityMapper.class);
 
-    @Mappings({
-            @Mapping(target = "forecastDtoList", source = "forecastList")
-    })
     CityDto getCityJpaToDto(City city);
 
     List<CityDto> getCityListJpaToDto(List<City> cityList);
-
-    default List<ForecastDto> getForecastListJpaToDto(List<Forecast> forecastList) {
-        return ForecastMapper.INSTANCE.getForecastListJpaToDto(forecastList);
-    }
 }

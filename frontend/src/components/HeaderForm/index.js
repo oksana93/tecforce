@@ -4,15 +4,19 @@ import InputLabel from '@material-ui/core/InputLabel';
 import CityList from "../CityList";
 
 class HeaderForm extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="HeaderForm">
                 <InputLabel>
-                    <CityList/>
+                    <CityList cityId = {this.props.cityId} cityIdChange={this.props.cityIdChange}/>
                 </InputLabel>
             </div>
         );
     }
-};
+}
 
 export default HeaderForm;
