@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../HeaderForm/style.css';
 import InputLabel from '@material-ui/core/InputLabel';
-import CityList from "../CityList";
+import CityList from "../CityForm";
 
 class HeaderForm extends Component {
     constructor(props) {

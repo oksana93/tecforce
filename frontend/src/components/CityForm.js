@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
-import SelectCity from "./SelectCity";
+import City from "./City";
 
 const styles = theme => ({
     button: {
@@ -14,7 +14,7 @@ const styles = theme => ({
     },
 });
 
-class CityList extends React.Component {
+class CityForm extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -24,11 +24,11 @@ class CityList extends React.Component {
         return (
             <form autoComplete="off">
                 <FormControl className={classes.formControl}>
-                    <SelectCity cityId = {this.props.cityId} cityIdChange={this.props.cityIdChange}/>
+                    <City cityId = {this.props.cityId} cityIdChange={this.props.cityIdChange}/>
                 </FormControl>
             </form>
         );
     }
 }
 
-export default withStyles(styles)(CityList);
+export default withStyles(styles)(CityForm);

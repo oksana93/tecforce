@@ -5,11 +5,12 @@ import Select from "@material-ui/core/Select/Select";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 
-class SelectCity extends Component {
+class City extends Component {
     constructor(props) {
         super(props);
         this.state = {
             cityList: [],
+            name: '',
             cityId: this.props.cityId,
             cityIdChange: this.props.cityIdChange,
             isOpen: false,
@@ -30,7 +31,7 @@ class SelectCity extends Component {
                     open={this.state.isOpen}
                     onClose={this.handleClose}
                     onOpen={this.handleOpen}
-                    value={this.state.cityId}
+                    value={this.state.name}
                     onChange={this.handleChange}
                     inputProps={{
                         name: 'name',
@@ -47,7 +48,10 @@ class SelectCity extends Component {
     }
 
     handleChange = event => {
-        this.state.cityIdChange(event.target.value);
+        this.setState({
+            name: event.target.value
+        });
+        this.state.cityIdChange(event.target.key);
     };
 
     handleClose = () => {
@@ -75,4 +79,4 @@ class SelectCity extends Component {
     };
 }
 
-export default SelectCity;
+export default City;

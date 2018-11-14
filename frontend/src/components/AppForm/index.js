@@ -36,7 +36,7 @@ class AppForm extends Component {
         return (
             <div className="App">
                 <HeaderForm cityId = {this.state.cityId} cityIdChange={this.state.cityIdChange}/>
-                <BodyForm/>
+                <BodyForm cityId = {this.state.cityId}/>
             </div>
         );
     }

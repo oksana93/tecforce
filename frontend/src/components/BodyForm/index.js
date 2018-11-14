@@ -1,19 +1,16 @@
 import React, {Component} from 'react';
 import '../BodyForm/style.css';
-import MainForm from "../MainForm";
+import ForecastForm from "../ForecastForm";
 
 class BodyForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            cityId: null,
-        }
     }
 
     render() {
         return (
             <div className="BodyForm">
-                <MainForm/>
+                <ForecastForm cityId={this.props.cityId}/>
             </div>
         );
     }

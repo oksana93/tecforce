@@ -108,7 +108,7 @@ public class City {
                 .append("\nCode")
                 .append(code);
         if (forecastList.isEmpty())
-            stringBuilder.append("\nForecast")
+            stringBuilder.append("\nIndex")
                     .append(forecastList.toString());
         return stringBuilder.toString();
     }
