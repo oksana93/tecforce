@@ -1,23 +1,27 @@
 import React, {Component} from 'react';
-import withStyles from "@material-ui/core/es/styles/withStyles";
+import PreviousForecast from "./PreviousForecast";
 
 class ForecastList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             cityId: this.props.cityId,
-            currentState: this.props.currentState,
-            forecastState: this.props.forecastState
+            forecastState: this.props.forecastState,
+            forecastCurrent: this.props.forecastCurrent,
+            forecastPrevious: this.props.forecastPrevious
         }
     }
 
     render() {
-        return (
-            <div className={ForecastList}>
-
-            </div>
-        )
+        {
+            console.log(this.state.forecastState == this.state.forecastPrevious)
+            if (this.state.forecastState == this.state.forecastPrevious)
+                return <div className="ForecastList">
+                    <PreviousForecast cityId={this.state.cityId}/>
+                </div>
+        }
+        return <div className="ForecastList"></div>
     }
 }
 
-export default ForecastList;
+export default (ForecastList);

@@ -1,15 +1,16 @@
 "use strict";
 import React, {Component} from 'react';
 import './/style.css';
-import Button from "@material-ui/core/Button/Button";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import PropTypes from "prop-types";
 import ForecastList from "../ForecastList";
+import Tabs from "@material-ui/core/Tabs/Tabs";
+import Tab from "@material-ui/core/Tab/Tab";
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.background.paper
     },
     tabsRoot: {
         borderBottom: '1px solid #e8e8e8',
@@ -43,7 +44,7 @@ const styles = theme => ({
             fontWeight: theme.typography.fontWeightMedium,
         },
         '&:focus': {
-            color: '#40a9ff',
+            color: '#696a9d',
         },
     },
     tabSelected: {},
@@ -56,26 +57,31 @@ class ForecastForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cityId: this.props.cityId
+            cityId: this.props.cityId,
+            forecastState: '',
+            forecastCurrent: 'current',
+            forecastPrevious: 'previous'
         }
     }
 
     render() {
-        const {classes} = this.props;
+        const { classes } = this.props;
         return (
             <div className="ForecastForm">
-                <div className={classes.root}>
-                    <Button classes={{root: classes.tabRoot, selected: classes.tabSelected}}>
-                        Прогноз на сегодня
-                    </Button>
-                    <Button classes={{root: classes.tabRoot, selected: classes.tabSelected}}>
-                        Прогноз на прошедший месяц
-                    </Button>
-                </div>
-                <ForecastList cityId={this.state.cityId}/>
+                <Tabs className={classes.root} value={this.state.forecastState} indicatorColor="primary"
+                      onChange={this.handleChange}>
+                    <Tab classes={{root: classes.tabRoot, selected: classes.tabSelected}} value={this.state.current} label="Прогноз на сегодня"/>
+                    <Tab classes={{root: classes.tabRoot, selected: classes.tabSelected}} value={this.state.previous} label="Прогноз на прошедший месяц"/>
+                </Tabs>
+                <ForecastList cityId={this.state.cityId} forecastState={this.state.forecastState} forecastCurrent={this.state.forecastCurrent}
+                              forecastPrevious={this.state.forecastPrevious}/>
             </div>
         );
     }
+
+    handleChange = (event, value) => {
+        this.setState({ forecastState: value });
+    };
 }
 
 

@@ -2,15 +2,16 @@ package com.tecforce.test.mapper;
 
 import com.tecforce.test.dto.ForecastDto;
 import com.tecforce.test.entity.Forecast;
+import com.tecforce.test.helper.StringHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
-import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Mapper
 public interface ForecastMapper {
@@ -36,13 +37,12 @@ public interface ForecastMapper {
                             currentWind = StringUtils.isEmpty(speed) ? null : (Double.valueOf(speed) * 0.44704);
                         }
                     }
-                    if (channelJsonObject.has("image")) {
-                        JSONObject imageJsonObject = channelJsonObject.getJSONObject("image");
-                        if (imageJsonObject != null)
-                            url = imageJsonObject.getString("url");
-                    }
                     if (channelJsonObject.has("item")) {
                         JSONObject itemJsonObject = channelJsonObject.getJSONObject("item");
+                        if (itemJsonObject.has("description")) {
+                            String description = itemJsonObject.getString("description");
+                            url = StringHelper.parseDescription(description);
+                        }
                         if (itemJsonObject.has("condition")) {
                             JSONObject conditionJsonObject = itemJsonObject.getJSONObject("condition");
                             if (conditionJsonObject.has("temp")) {

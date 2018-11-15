@@ -10,5 +10,5 @@
     text-align: justify;
     letter-spacing: 1px;
     padding: 5vh 0;
-    box-shadow: 0 0 3px rgba(0,0,0,0.5); /* Параметры тени */
+    box-shadow: 0 0 3px rgba(0,0,0,0.2); /* Параметры тени */
 }
