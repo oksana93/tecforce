@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/forecast")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ForecastController {
     private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(ForecastController.class);
 
@@ -23,7 +24,7 @@ public class ForecastController {
         return forecastService.getCurrentForecastDtoByCityId(cityId);
     }
 
-    @GetMapping("/period")
+    @GetMapping("/previous")
     public List<ForecastDto> getForecastListToPreviousPeriodByCityId(@RequestParam UUID cityId) {
         LOG.debug("Get previous forecast");
         return forecastService.getForecastListToPreviousPeriodByCityId(cityId);

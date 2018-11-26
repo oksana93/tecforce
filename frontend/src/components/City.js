@@ -15,7 +15,7 @@ class City extends Component {
             cityIdChange: this.props.cityIdChange,
             isOpen: false,
         };
-        this.getAllCities(this.props)
+        this.getAllCities()
     }
 
     render() {
@@ -51,7 +51,7 @@ class City extends Component {
         this.setState({
             name: event.target.value
         });
-        this.state.cityIdChange(event.target.key);
+        this.state.cityIdChange(event.target.value);
     };
 
     handleClose = () => {
@@ -63,9 +63,9 @@ class City extends Component {
         this.setState({isOpen: true});
     };
 
-    getAllCities = (props) => {
+    getAllCities = () => {
         agent.Agent.cityList()
-            .then(dataWrappedByPromise => dataWrappedByPromise.json())
+            .then(response => response.json())
             .then(data => {
                 this.setState({
                     cityList: data

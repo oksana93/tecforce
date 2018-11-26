@@ -1,11 +1,12 @@
 "use strict";
 import React, {Component} from 'react';
-import './/style.css';
+import './style.css';
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import PropTypes from "prop-types";
-import ForecastList from "../ForecastList";
 import Tabs from "@material-ui/core/Tabs/Tabs";
 import Tab from "@material-ui/core/Tab/Tab";
+import PreviousForecast from "../PreviousForecast";
+import CurrentForecast from "../CurrentForecast";
 
 const styles = theme => ({
     root: {
@@ -53,34 +54,50 @@ const styles = theme => ({
     },
 });
 
+const forecastCurrent = 'current';
+const forecastPrevious = 'previous';
+
 class ForecastForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cityId: this.props.cityId,
-            forecastState: '',
-            forecastCurrent: 'current',
-            forecastPrevious: 'previous'
+            cityId: props.cityId,
+            value: forecastCurrent
         }
     }
 
     render() {
-        const { classes } = this.props;
-        return (
-            <div className="ForecastForm">
-                <Tabs className={classes.root} value={this.state.forecastState} indicatorColor="primary"
-                      onChange={this.handleChange}>
-                    <Tab classes={{root: classes.tabRoot, selected: classes.tabSelected}} value={this.state.current} label="Прогноз на сегодня"/>
-                    <Tab classes={{root: classes.tabRoot, selected: classes.tabSelected}} value={this.state.previous} label="Прогноз на прошедший месяц"/>
-                </Tabs>
-                <ForecastList cityId={this.state.cityId} forecastState={this.state.forecastState} forecastCurrent={this.state.forecastCurrent}
-                              forecastPrevious={this.state.forecastPrevious}/>
-            </div>
-        );
+        const {classes} = this.props;
+        const {value} = this.state;
+        if (this.state.cityId != this.props.cityId) {
+            this.handleChangeByCity();
+            return null;
+        } else {
+            return (
+                <div className="ForecastForm">
+                    <Tabs className={classes.root} value={value} indicatorColor="primary"
+                          onChange={this.handleChange}>
+                        <Tab classes={{root: classes.tabRoot, selected: classes.tabSelected}} value={forecastCurrent}
+                             label="Прогноз на сегодня"/>
+                        <Tab classes={{root: classes.tabRoot, selected: classes.tabSelected}} value={forecastPrevious}
+                             label="Прогноз на прошедший месяц"/>
+                    </Tabs>
+                    {value === forecastPrevious && <PreviousForecast cityId={this.props.cityId}/>}
+                    {value === forecastCurrent && <CurrentForecast cityId={this.props.cityId}/>}
+                </div>
+            );
+        }
     }
 
+    handleChangeByCity = () => {
+        this.setState({
+            cityId: this.props.cityId,
+            value: forecastCurrent
+        })
+    };
+
     handleChange = (event, value) => {
-        this.setState({ forecastState: value });
+        this.setState({value});
     };
 }
 

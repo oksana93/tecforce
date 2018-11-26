@@ -12,7 +12,9 @@ public interface ForeсastRepository extends JpaRepository<Forecast, UUID> {
     @Query(" select forecast from Forecast forecast where forecast.date = current_date and forecast.city.id = :cityId ")
     Forecast getForecastByCityIdAndCurrentDate(@Param("cityId") UUID cityId);
 
-    @Query(value = " select forecast from Forecast forecast where forecast.date <=  current_date " +
-            " and forecast.date >= (current_date - 28) and forecast.city.id = :cityId ", nativeQuery = true)
+    @Query(value = " select * from Forecast forecast " +
+            " where forecast.date <=  current_date " +
+            " and forecast.date >= (current_date - 28) " +
+            " and forecast.city_id = :cityId ", nativeQuery = true)
     List<Forecast> getAllForecastToPreviousPeriodByCityId(@Param("cityId") UUID cityId);
 }

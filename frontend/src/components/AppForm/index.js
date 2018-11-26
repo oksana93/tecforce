@@ -35,8 +35,8 @@ class AppForm extends Component {
     render() {
         return (
             <div className="App">
-                <HeaderForm cityId = {this.state.cityId} cityIdChange={this.state.cityIdChange}/>
-                <BodyForm cityId = {this.state.cityId}/>
+                <HeaderForm cityId={this.state.cityId} cityIdChange={this.state.cityIdChange}/>
+                <BodyForm cityId={this.state.cityId}/>
             </div>
         );
     }
