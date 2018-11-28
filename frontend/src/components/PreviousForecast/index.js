@@ -16,10 +16,10 @@ class PreviousForecast extends Component {
     render() {
         const forecastList = this.state.forecastList;
         if (forecastList)
-            return forecastList.map(forecast =>
-                <div className="PreviousForecast">
-                    <Forecast key={forecast} forecast={forecast}/>
-                </div>);
+            return <div className="PreviousForecast">
+                {forecastList.map(forecast =>
+                    <Forecast key={forecast.id} forecast={forecast}/>)}
+            </div>;
         else
             return null;
     }
@@ -29,8 +29,8 @@ class PreviousForecast extends Component {
         agent.Agent.previousForecastsByCity(cityId)
             .then(dataWrappedByPromise => dataWrappedByPromise.json())
             .then(data => {
-                this.setState({forecastList: data});
                 console.log(data);
+                this.setState({forecastList: data});
             })
             .catch(e => {
                 console.log(e);

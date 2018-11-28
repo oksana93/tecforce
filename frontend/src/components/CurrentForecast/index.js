@@ -4,18 +4,24 @@ import agent from "../../agent";
 import Forecast from "../Forecast";
 
 class CurrentForecast extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            cityId: this.props.cityId,
-            currentForecast: null
+            currentForecast: []
         };
         this.getCurrentForecastByCity(this.props.cityId);
+
     }
 
     render() {
         const forecast = this.state.currentForecast;
-        return forecast ? <Forecast forecast={forecast}/> : null;
+        if (this.props.cityId != "" && forecast)
+            return <div className="CurrentForecast">
+                <Forecast forecast={forecast}/>
+            </div>;
+        else
+            return null;
     }
 
     getCurrentForecastByCity = (cityId) => {
@@ -24,9 +30,7 @@ class CurrentForecast extends Component {
             .then(dataWrappedByPromise => dataWrappedByPromise.json())
             .then(data => {
                 console.log(data);
-                this.setState({
-                    currentForecast: data
-                })
+                this.setState({currentForecast: data});
             })
             .catch(e => {
                 console.log(e);
