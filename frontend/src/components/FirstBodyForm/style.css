@@ -1,0 +1,11 @@
+.FirstBodyForm {
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    width: 100vw;
+    height: 100vh;
+    text-align: justify;
+    letter-spacing: 1px;
+    background-color: rgb(229, 228, 233);
+}

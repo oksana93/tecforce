@@ -59,7 +59,7 @@ class Forecast extends Component {
                                 <TableCell>{forecast.date}</TableCell>
                                 <TableCell>{forecast.day}</TableCell>
                                 <TableCell>
-                                    <Grid container direction="column" justify="center" alignItems="flex-start">
+                                    <Grid container direction="column" justify="center" alignIcdtems="flex-start">
                                         <div>{forecast.minTemp}</div>
                                         <dic>{forecast.maxTemp}</dic>
                                     </Grid>
