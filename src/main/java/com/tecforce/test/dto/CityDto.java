@@ -11,6 +11,7 @@ public class CityDto implements Serializable {
     protected Integer woeid;
     protected Integer code;
     protected List<ForecastDto> forecastDtoList = new ArrayList<>();
+    protected ForecastDto currentForecast;
 
     public UUID getId() {
         return id;
@@ -50,5 +51,13 @@ public class CityDto implements Serializable {
 
     public void setForecastDtoList(List<ForecastDto> forecastDtoList) {
         this.forecastDtoList = forecastDtoList;
+    }
+
+    public ForecastDto getCurrentForecast() {
+        return currentForecast;
+    }
+
+    public void setCurrentForecast(ForecastDto currentForecast) {
+        this.currentForecast = currentForecast;
     }
 }

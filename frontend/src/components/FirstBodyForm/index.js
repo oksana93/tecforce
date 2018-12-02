@@ -15,7 +15,9 @@ import withStyles from "@material-ui/core/es/styles/withStyles";
 const styles = theme => ({
     root: {
         ...theme.mixins.gutters(),
-        marginTop: theme.spacing.unit * 2,
+        marginTop: theme.spacing.unit * 4,
+        marginLeft: '10vw',
+        width: '80vw',
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         fontWeight: 500
@@ -39,7 +41,7 @@ class FirstBodyForm extends Component {
         this.state = {
             cityList: []
         };
-        this.getAllCities()
+        this.getAllCitiesWithCurrentForecast();
     }
 
     render() {
@@ -47,12 +49,13 @@ class FirstBodyForm extends Component {
         return (
             <div className="FirstBodyForm">
                 <Grid container direction="column" justify="flex-start" alignItems="flex-start">
-                    {this.state.cityList.map((city) =>
-                        <Paper key={city.id} className={classes.root} elevation={1}>
+                    {this.state.cityList.map((city) => {
+                        return <Paper key={city.id} className={classes.root} elevation={1}>
                             <Grid container direction="row" justify="flex-start" alignItems="flex-start">
                                 <Table className={classes.table}>
                                     <TableHead>
                                         <TableRow>
+                                            <TableCell>city</TableCell>
                                             <TableCell>date</TableCell>
                                             <TableCell>day</TableCell>
                                             <TableCell>temp (degree)</TableCell>
@@ -62,38 +65,39 @@ class FirstBodyForm extends Component {
                                     </TableHead>
                                     <TableBody>
                                         <TableRow>
-                                            {/*<TableCell>{forecast.date}</TableCell>*/}
-                                            {/*<TableCell>{forecast.day}</TableCell>*/}
-                                            {/*<TableCell>*/}
-                                                {/*<Grid container direction="column" justify="center"*/}
-                                                      {/*alignIcdtems="flex-start">*/}
-                                                    {/*<div>{forecast.minTemp}</div>*/}
-                                                    {/*<dic>{forecast.maxTemp}</dic>*/}
-                                                {/*</Grid>*/}
-                                            {/*</TableCell>*/}
-                                            {/*<TableCell>*/}
-                                                {/*<Grid container direction="column" justify="center"*/}
-                                                      {/*alignItems="flex-start">*/}
-                                                    {/*<div>{forecast.minWind}</div>*/}
-                                                    {/*<div>{forecast.maxTemp}</div>*/}
-                                                {/*</Grid>*/}
-                                            {/*</TableCell>*/}
-                                            {/*<TableCell>*/}
-                                                {/*{forecast.text}*/}
-                                            {/*</TableCell>*/}
+                                            <TableCell>{city.name}</TableCell>
+                                            <TableCell>{city.currentForecast.date}</TableCell>
+                                            <TableCell>{city.currentForecast.day}</TableCell>
+                                            <TableCell>
+                                                <Grid container direction="column" justify="center"
+                                                      alignIcdtems="flex-start">
+                                                    <div>{city.currentForecast.minTemp}</div>
+                                                    <dic>{city.currentForecast.maxTemp}</dic>
+                                                </Grid>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Grid container direction="column" justify="center"
+                                                      alignItems="flex-start">
+                                                    <div>{city.currentForecast.minWind}</div>
+                                                    <div>{city.currentForecast.maxWind}</div>
+                                                </Grid>
+                                            </TableCell>
+                                            <TableCell>
+                                                {city.currentForecast.text}
+                                            </TableCell>
                                         </TableRow>
                                     </TableBody>
                                 </Table>
                             </Grid>
                         </Paper>
-                    )}
+                    })}
                 </Grid>
             </div>
         );
     }
 
-    getAllCities = () => {
-        agent.Agent.cityList()
+    getAllCitiesWithCurrentForecast = () => {
+        agent.Agent.cityListWithCurrentForecast()
             .then(response => response.json())
             .then(data => {
                 this.setState({

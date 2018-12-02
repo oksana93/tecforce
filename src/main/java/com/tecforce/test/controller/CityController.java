@@ -25,6 +25,12 @@ public class CityController {
         return cityService.getAllCitiesDto();
     }
 
+    @GetMapping(value = "/cities/current", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<CityDto> getAllCitiesWithCurrentForecast() {
+        LOG.debug("Get all cities with current forecast");
+        return cityService.getAllCitiesWithCurrentForecast();
+    }
+
     @GetMapping
     public CityDto getCityById(@RequestParam UUID id) {
         LOG.debug("Get all city id");

@@ -25,6 +25,12 @@ public class CityService {
     }
 
     @Transactional
+    public List<CityDto> getAllCitiesWithCurrentForecast() {
+        return CityMapper.INSTANCE.getCityListJpaToDtoWithCurrentForecast(
+                cityRepository.findAll());
+    }
+
+    @Transactional
     public CityDto getCityDtoById(UUID id) {
         Optional<City> cityOptional = cityRepository.findById(id);
         return cityOptional.isPresent() ? CityMapper.INSTANCE.getCityJpaToDto(cityOptional.get()) : new CityDto();

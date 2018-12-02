@@ -67,7 +67,7 @@ class Forecast extends Component {
                                 <TableCell>
                                     <Grid container direction="column" justify="center" alignItems="flex-start">
                                         <div>{forecast.minWind}</div>
-                                        <div>{forecast.maxTemp}</div>
+                                        <div>{forecast.maxWind}</div>
                                     </Grid>
                                 </TableCell>
                                 <TableCell>

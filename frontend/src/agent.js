@@ -13,6 +13,8 @@ let OPTIONS = {
 const Agent = {
     cityList: () =>
         requests.getCities('/all'),
+    cityListWithCurrentForecast: () =>
+        requests.getAllCitiesWithCurrentForecast('/cities/current'),
     currentForecastsByCity: (cityId) =>
         requests.getForecastByCity('/current?cityId=' + cityId),
     previousForecastsByCity: (cityId) =>
@@ -21,6 +23,8 @@ const Agent = {
 
 const requests = {
     getCities: url =>
+        fetch(`${CITY_ROOT}${url}`, OPTIONS),
+    getAllCitiesWithCurrentForecast: url =>
         fetch(`${CITY_ROOT}${url}`, OPTIONS),
     getForecastByCity: url =>
         fetch(`${FORECAST_ROOT}${url}`, OPTIONS)
