@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
-import '../HeaderForm/style.css';
+import './style.css';
 import InputLabel from '@material-ui/core/InputLabel';
 import CityList from "../CityForm";
 
 class HeaderForm extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="HeaderForm">

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './style.css';
-import agent from "../../agent";
-import Forecast from "../Forecast";
+import agent from "../../../agent";
+import Forecast from "../../Forecast";
 
 class CurrentForecast extends Component {
 

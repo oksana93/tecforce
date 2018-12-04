@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import '../BodyForm/style.css';
 import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import agent from "../../agent";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Avatar from "@material-ui/core/Avatar/Avatar";
 import Table from "@material-ui/core/Table/Table";
 import TableHead from "@material-ui/core/TableHead/TableHead";
@@ -11,6 +9,7 @@ import TableRow from "@material-ui/core/TableRow/TableRow";
 import TableCell from "@material-ui/core/TableCell/TableCell";
 import TableBody from "@material-ui/core/TableBody/TableBody";
 import withStyles from "@material-ui/core/es/styles/withStyles";
+import {Link} from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -33,9 +32,13 @@ const styles = theme => ({
     tableCell: {
         fontWeight: 500,
     },
+    button: {
+        margin: theme.spacing.unit,
+        color: 'black'
+    }
 });
 
-class FirstBodyForm extends Component {
+class CurrentForecast extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -55,6 +58,7 @@ class FirstBodyForm extends Component {
                                 <Table className={classes.table}>
                                     <TableHead>
                                         <TableRow>
+                                            <TableCell/>
                                             <TableCell>city</TableCell>
                                             <TableCell>date</TableCell>
                                             <TableCell>day</TableCell>
@@ -62,17 +66,30 @@ class FirstBodyForm extends Component {
                                             <TableCell>wind ()</TableCell>
                                             <TableCell>text</TableCell>
                                         </TableRow>
+
                                     </TableHead>
                                     <TableBody>
                                         <TableRow>
-                                            <TableCell>{city.name}</TableCell>
+                                            <TableCell>
+                                                <Avatar className={classes.bigAvatar}
+                                                        src={city.currentForecast.imageUrl}/>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Link className={classes.button} to='/previousForecast/:name/:cityId'
+                                                      params={{
+                                                          name: city.name,
+                                                          cityId: city.id
+                                                      }}>
+                                                    {city.name}
+                                                </Link>
+                                            </TableCell>
                                             <TableCell>{city.currentForecast.date}</TableCell>
                                             <TableCell>{city.currentForecast.day}</TableCell>
                                             <TableCell>
                                                 <Grid container direction="column" justify="center"
-                                                      alignIcdtems="flex-start">
+                                                      alignItems="flex-start">
                                                     <div>{city.currentForecast.minTemp}</div>
-                                                    <dic>{city.currentForecast.maxTemp}</dic>
+                                                    <div>{city.currentForecast.maxTemp}</div>
                                                 </Grid>
                                             </TableCell>
                                             <TableCell>
@@ -112,4 +129,4 @@ class FirstBodyForm extends Component {
     };
 }
 
-export default withStyles(styles)(FirstBodyForm);
+export default withStyles(styles)(CurrentForecast);

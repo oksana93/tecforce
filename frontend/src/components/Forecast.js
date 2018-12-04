@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Paper from "@material-ui/core/Paper/Paper";
-import Typography from "@material-ui/core/Typography/Typography";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Avatar from "@material-ui/core/Avatar/Avatar";
 import Grid from "@material-ui/core/Grid/Grid";
@@ -32,10 +31,6 @@ const styles = theme => ({
 });
 
 class Forecast extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {classes} = this.props;
         const forecast = this.props.forecast;
@@ -59,9 +54,9 @@ class Forecast extends Component {
                                 <TableCell>{forecast.date}</TableCell>
                                 <TableCell>{forecast.day}</TableCell>
                                 <TableCell>
-                                    <Grid container direction="column" justify="center" alignIcdtems="flex-start">
+                                    <Grid container direction="column" justify="center" alignItems="flex-start">
                                         <div>{forecast.minTemp}</div>
-                                        <dic>{forecast.maxTemp}</dic>
+                                        <div>{forecast.maxTemp}</div>
                                     </Grid>
                                 </TableCell>
                                 <TableCell>

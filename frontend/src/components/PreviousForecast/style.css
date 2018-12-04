@@ -1,9 +1,0 @@
-.FirstBodyForm {
-    width: 100vw;
-    height: 100vh;
-    background: url("../../images/starry_sky.jpg") no-repeat center top fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}

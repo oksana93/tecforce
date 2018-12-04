@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 import '../AppForm/style.css';
-import SecondExample from '../SecondExample';
+import SecondExample from '../second/SecondExample';
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import * as PropTypes from "prop-types";
-import Badge from "@material-ui/core/Badge/Badge";
 import FormGroup from "@material-ui/core/FormGroup/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
 import Switch from "@material-ui/core/Switch/Switch";
-import MailIcon from '@material-ui/icons/Mail';
-import HeaderForm from "../HeaderForm";
-import FirstExample from "../FirstExample";
+import FirstExample from "../first/FirstExample";
 
 const styles = theme => ({
     root: {
@@ -23,6 +20,7 @@ const styles = theme => ({
         padding: theme.spacing.unit * 2
     },
     badge: {
+        zIndex: 3,
         alignItems: 'flex-start',
         position: 'fixed'
     }
@@ -63,8 +61,8 @@ class AppForm extends Component {
                         />
                     </FormGroup>
                 </div>
-                {this.state.invisible && <SecondExample cityId={this.state.cityId} cityIdChange={this.state.cityIdChange}/>}
                 {!this.state.invisible && <FirstExample/>}
+                {this.state.invisible && <SecondExample cityId={this.state.cityId} cityIdChange={this.state.cityIdChange}/>}
             </div>
         );
     }

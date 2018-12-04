@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import agent from '../agent';
+import agent from '../../agent';
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Select from "@material-ui/core/Select/Select";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
