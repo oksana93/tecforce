@@ -14,7 +14,6 @@ class PreviousForecast extends Component {
     }
 
     render() {
-        const city = this.props.name;
         const forecastList = this.state.forecastList;
         if (forecastList)
             return <div className="PreviousForecast">

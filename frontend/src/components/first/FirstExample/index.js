@@ -12,8 +12,8 @@ class FirstExample extends Component {
                     <Route exact path='/' component={() => (
                         <CurrentForecast/>
                     )}/>
-                    <Route path='/previousForecast/:name/:cityId' component={() => (
-                        <PreviousForecast/>
+                    <Route path='/previousForecast/:name/:cityId' component={({ match }) => (
+                        <PreviousForecast name={match.params.name} cityId={match.params.cityId}/>
                     )}/>
                 </Switch>
             </BrowserRouter>

@@ -7,20 +7,12 @@ class FirstPreviousForecast extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            cityId: '',
+            name: this.props.name,
+            cityId: this.props.cityId,
             forecastList: []
-        }
+        };
+        this.getPreviousForecastByCity(this.props.cityId);
     }
-
-    componentWillMount() {
-        if (this.props.match) {
-            let name = this.props.match.params.name;
-            let cityId = this.props.match.params.cityId;
-            this.getPreviousForecastByCity(cityId, name);
-        }
-    }
-
 
     render() {
         const forecastList = this.state.forecastList;
@@ -34,15 +26,13 @@ class FirstPreviousForecast extends Component {
             return null;
     }
 
-    getPreviousForecastByCity = (cityId, name) => {
+    getPreviousForecastByCity = (cityId) => {
         (cityId != "") &&
         agent.Agent.previousForecastsByCity(cityId)
             .then(dataWrappedByPromise => dataWrappedByPromise.json())
             .then(data => {
                 console.log(data);
                 this.setState({
-                    name: name,
-                    cityId: cityId,
                     forecastList: data
                 });
             })

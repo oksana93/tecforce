@@ -9,6 +9,7 @@ import TableHead from "@material-ui/core/TableHead/TableHead";
 import TableRow from "@material-ui/core/TableRow/TableRow";
 import TableCell from "@material-ui/core/TableCell/TableCell";
 
+
 const styles = theme => ({
     root: {
         ...theme.mixins.gutters(),
@@ -38,7 +39,7 @@ class Forecast extends Component {
         return <div>
             <Paper className={classes.root} elevation={1}>
                 <Grid container direction="row" justify="flex-start" alignItems="flex-start">
-                    <Avatar className={classes.bigAvatar} src={forecast.imageUrl}/>
+                    {forecast.imageUrl && <Avatar className={classes.bigAvatar} src={forecast.imageUrl}/>}
                     <Table className={classes.table}>
                         <TableHead>
                             <TableRow>

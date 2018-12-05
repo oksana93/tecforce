@@ -50,7 +50,7 @@ class CurrentForecast extends Component {
     render() {
         const {classes} = this.props;
         return (
-            <div className="FirstBodyForm">
+            <div className="CurrentForecast">
                 <Grid container direction="column" justify="flex-start" alignItems="flex-start">
                     {this.state.cityList.map((city) => {
                         return <Paper key={city.id} className={classes.root} elevation={1}>
@@ -75,11 +75,7 @@ class CurrentForecast extends Component {
                                                                                  src={city.currentForecast.imageUrl}/>}
                                             </TableCell>
                                             <TableCell>
-                                                <Link className={classes.button} to='/previousForecast/:name/:cityId'
-                                                      params={{
-                                                          name: city.name,
-                                                          cityId: city.id
-                                                      }}>
+                                                <Link className={classes.button} to={`/previousForecast/${city.name}/${city.id}`}>
                                                     {city.name}
                                                 </Link>
                                             </TableCell>
