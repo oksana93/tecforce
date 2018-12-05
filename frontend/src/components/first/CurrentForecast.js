@@ -71,8 +71,8 @@ class CurrentForecast extends Component {
                                     <TableBody>
                                         <TableRow>
                                             <TableCell>
-                                                <Avatar className={classes.bigAvatar}
-                                                        src={city.currentForecast.imageUrl}/>
+                                                {city.currentForecast && <Avatar className={classes.bigAvatar}
+                                                                                 src={city.currentForecast.imageUrl}/>}
                                             </TableCell>
                                             <TableCell>
                                                 <Link className={classes.button} to='/previousForecast/:name/:cityId'
@@ -83,24 +83,24 @@ class CurrentForecast extends Component {
                                                     {city.name}
                                                 </Link>
                                             </TableCell>
-                                            <TableCell>{city.currentForecast.date}</TableCell>
-                                            <TableCell>{city.currentForecast.day}</TableCell>
+                                            <TableCell>{city.currentForecast && city.currentForecast.date}</TableCell>
+                                            <TableCell>{city.currentForecast && city.currentForecast.day}</TableCell>
                                             <TableCell>
                                                 <Grid container direction="column" justify="center"
                                                       alignItems="flex-start">
-                                                    <div>{city.currentForecast.minTemp}</div>
-                                                    <div>{city.currentForecast.maxTemp}</div>
+                                                    <div>{city.currentForecast && city.currentForecast.minTemp}</div>
+                                                    <div>{city.currentForecast && city.currentForecast.maxTemp}</div>
                                                 </Grid>
                                             </TableCell>
                                             <TableCell>
                                                 <Grid container direction="column" justify="center"
                                                       alignItems="flex-start">
-                                                    <div>{city.currentForecast.minWind}</div>
-                                                    <div>{city.currentForecast.maxWind}</div>
+                                                    <div>{city.currentForecast && city.currentForecast.minWind}</div>
+                                                    <div>{city.currentForecast && city.currentForecast.maxWind}</div>
                                                 </Grid>
                                             </TableCell>
                                             <TableCell>
-                                                {city.currentForecast.text}
+                                                {city.currentForecast && city.currentForecast.text}
                                             </TableCell>
                                         </TableRow>
                                     </TableBody>
