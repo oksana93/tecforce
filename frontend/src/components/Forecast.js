@@ -9,11 +9,10 @@ import TableHead from "@material-ui/core/TableHead/TableHead";
 import TableRow from "@material-ui/core/TableRow/TableRow";
 import TableCell from "@material-ui/core/TableCell/TableCell";
 
-
 const styles = theme => ({
     root: {
         ...theme.mixins.gutters(),
-        marginTop: theme.spacing.unit * 2,
+        marginTop: theme.spacing.unit * 3,
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         fontWeight: 500

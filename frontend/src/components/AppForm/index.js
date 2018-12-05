@@ -11,6 +11,8 @@ import FirstExample from "../first/FirstExample";
 const styles = theme => ({
     root: {
         flexGrow: 1,
+        minHeight: '100vh',
+        minWidth: '100vw'
     },
     paper: {
         height: 140,

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './style.css';
 import agent from "../../../agent";
 import Forecast from "../../Forecast";
+import Typography from "@material-ui/core/Typography/Typography";
 
 class FirstPreviousForecast extends Component {
     constructor(props) {
@@ -18,7 +19,9 @@ class FirstPreviousForecast extends Component {
         const forecastList = this.state.forecastList;
         if (forecastList)
             return <div className="PreviousForecast">
-                <h2 className="j434 j440 j461">{this.state.name}</h2>
+                <Typography variant="h4" gutterBottom style={{color: 'white'}}>
+                    {this.state.name}
+                </Typography>
                 {forecastList.map(forecast =>
                     <Forecast key={forecast.id} forecast={forecast}/>)}
             </div>;
