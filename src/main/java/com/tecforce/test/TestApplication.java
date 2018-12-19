@@ -7,7 +7,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootApplication
-@RunWith(SpringRunner.class)
 @EnableScheduling
 public class TestApplication {
 
