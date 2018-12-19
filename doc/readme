@@ -1,0 +1,14 @@
+# Create
+npm install -g create-react-app
+create-react-app my-app
+
+# Library
+# npm install material-ui
+# npm install -g express-generator
+# npm install react-router@3.0.5
+# npm install react-router-dom
+
+# React start:
+cd frontend
+# install the dependencies
+npm install

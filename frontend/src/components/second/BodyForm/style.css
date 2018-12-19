@@ -1,0 +1,12 @@
+.BodyForm {
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    margin-left: 5vw;
+    width: 90vw;
+    height: 80vh;
+    text-align: justify;
+    letter-spacing: 1px;
+    background-color: rgb(229, 228, 233);
+}

@@ -1,0 +1,14 @@
+.HeaderForm {
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../../images/summer_sky.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 10vh;
+    text-align: justify;
+    letter-spacing: 1px;
+    padding: 5vh 0;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2); /* Параметры тени */
+}
