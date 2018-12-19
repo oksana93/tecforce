@@ -1,0 +1,15 @@
+# Requirements
+node js,
+jdk 1.8,
+database: PostgreSql,
+          platform=postgres
+          username=postgres
+          password=root
+
+# React start
+cd frontend
+npm install
+npm start
+
+# Server start
+TestApplication -> run
