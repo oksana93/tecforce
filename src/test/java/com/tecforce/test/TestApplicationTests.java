@@ -1,27 +1,21 @@
 package com.tecforce.test;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 @SpringBootTest
-@TestPropertySource(locations = "classpath:application-test.properties")
+@RunWith(SpringRunner.class)
+//@TestPropertySource(locations = "classpath:application-test.properties")
 public class TestApplicationTests {
 
     @Test

@@ -5,17 +5,13 @@ import com.tecforce.test.mapper.ForecastMapper;
 import com.tecforce.test.service.YahooService;
 import org.json.JSONObject;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-@TestPropertySource(locations = "classpath:application-test.properties")
-public class ForecastTests {
+public class ForecastTests extends TestApplicationTests {
     private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(SpringRunner.class);
 
     @Autowired
